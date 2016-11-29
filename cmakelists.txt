@@ -8,37 +8,36 @@ if(NOT CMAKE_BUILD_TYPE)
 endif()
 # (you can also set it on the command line: -D CMAKE_BUILD_TYPE=Release)
 
-project(myproject)
+project(berlin_wall)
 
 # Set version information in a config.h file
-set(myproject_VERSION_MAJOR 1)
-set(myproject_VERSION_MINOR 0)
+set(berlin_wall_VERSION_MAJOR 1)
+set(berlin_wall_VERSION_MINOR 0)
+
 configure_file(
-  "${PROJECT_SOURCE_DIR}/config.h.in"
+  "${PROJECT_BINARY_DIR}/config.h.in"
   "${PROJECT_BINARY_DIR}/config.h"
   )
 include_directories("${PROJECT_BINARY_DIR}")
 
 # Define sources and executable
-set(EXECUTABLE_NAME "myproject")
+set(EXECUTABLE_NAME "berlin_wall")
 add_executable(${EXECUTABLE_NAME} main.cpp)
 
-
-# Detect and add SFML
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
 
 # OpenGL
-find_package(OpenGL REQUIRED)
-include_directories(${OPENGL_INCLUDE_DIR})
-if (OPENGL_FOUND)
-  target_link_libraries(${EXECUTABLE_NAME} ${OPENGL_LIBRARIES})
-  # or: target_link_libraries(${EXECUTABLE_NAME} ${OPENGL_gl_LIBRARY})
-  target_link_libraries(${EXECUTABLE_NAME} m)  # if you use maths.h
-endif()
+#find_package(OpenGL REQUIRED)
+#include_directories(${OPENGL_INCLUDE_DIR})
+#if (OPENGL_FOUND)
+#  target_link_libraries(${EXECUTABLE_NAME} ${OPENGL_LIBRARIES})
+#  # or: target_link_libraries(${EXECUTABLE_NAME} ${OPENGL_gl_LIBRARY})
+#  target_link_libraries(${EXECUTABLE_NAME} m)  # if you use maths.h
+#endif()
 
 #Find any version 2.X of SFML
 #See the FindSFML.cmake file for additional details and instructions
-find_package(SFML 2 REQUIRED system window graphics network audio)
+find_package(SFML 2 REQUIRED system window graphics audio)
 if(SFML_FOUND)
   include_directories(${SFML_INCLUDE_DIR})
   target_link_libraries(${EXECUTABLE_NAME} ${SFML_LIBRARIES})
@@ -52,6 +51,6 @@ install(TARGETS ${EXECUTABLE_NAME} DESTINATION bin)
 # CPack packaging
 include(InstallRequiredSystemLibraries)
 set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_SOURCE_DIR}/COPYING")
-set(CPACK_PACKAGE_VERSION_MAJOR "${myproject_VERSION_MAJOR}")
-set(CPACK_PACKAGE_VERSION_MINOR "${myproject_VERSION_MINOR}")
+set(CPACK_PACKAGE_VERSION_MAJOR "${berlin_wall_VERSION_MAJOR}")
+set(CPACK_PACKAGE_VERSION_MINOR "${berlin_wall_VERSION_MINOR}")
 include(CPack)

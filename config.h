@@ -1,2 +1,3 @@
-#define myproject_VERSION_MAJOR @myproject_VERSION_MAJOR@
-#define myproject_VERSION_MINOR @myproject_VERSION_MINOR@
+#define BERLIN_WALL_VERSION_MAJOR 1
+#define BERLIN_WALL_VERSION_MINOR 0
+#define test 

@@ -7,7 +7,7 @@ int main(int argc, char* argv[]) {
 
   /* Code adapted from the SFML 2 "Window" example */
 
-  cout << "Version " << myproject_VERSION_MAJOR << "." << myproject_VERSION_MINOR << endl;
+/*  cout << "Version " << myproject_VERSION_MAJOR << "." << myproject_VERSION_MINOR << endl;
 
   sf::Window App(sf::VideoMode(800, 600), "myproject");
 
@@ -18,5 +18,5 @@ int main(int argc, char* argv[]) {
     App.close();
     }
     App.display();
-  }
+  }*/
 }
