@@ -1,0 +1,9 @@
+C:/Users/manut/Documents/UF/BerlinWall/CMakeFiles/berlin_wall.dir
+C:/Users/manut/Documents/UF/BerlinWall/CMakeFiles/edit_cache.dir
+C:/Users/manut/Documents/UF/BerlinWall/CMakeFiles/package_source.dir
+C:/Users/manut/Documents/UF/BerlinWall/CMakeFiles/package.dir
+C:/Users/manut/Documents/UF/BerlinWall/CMakeFiles/install.dir
+C:/Users/manut/Documents/UF/BerlinWall/CMakeFiles/rebuild_cache.dir
+C:/Users/manut/Documents/UF/BerlinWall/CMakeFiles/list_install_components.dir
+C:/Users/manut/Documents/UF/BerlinWall/CMakeFiles/install/local.dir
+C:/Users/manut/Documents/UF/BerlinWall/CMakeFiles/install/strip.dir

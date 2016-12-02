@@ -26,22 +26,23 @@ int main(int argc, char* argv[]) {
   }
 }
 
-
-
 class Maze {
     public: 
-        Maze();
+        Maze(int size, int lineWidth);
         ~Maze();
         void setLineWidth (int width);
         void setMazeSize (int mazeSize);
         int generate();
-    protected:
-        int size, lineWidth;
-        bool maze[size*size];
+
     private:
         int posX, posY;
         enum eDirection;
-        int Heading_X[9], Heading_Y[9], Mask[9];
+        int Heading_X[9];
+        int Heading_Y[9];
+        int Mask[9];
+        int size, lineWidth;
+        bool* maze;
+        
         int currentIndex();
         int randInt();
         int randInt4();
@@ -49,12 +50,16 @@ class Maze {
         eDirection GetDirection();
 };
 
-Maze::Maze() {
+Maze::Maze(int size, int lineWidth) {
     maze = new bool[size * size];
     random_device rd;
     mt19937 gen( rd() );
     uniform_int_distribution<> dis( 0, size-1 );
     uniform_int_distribution<> dis4( 0, 3 );
+}
+
+Maze::~Maze() {
+    delete maze;
 }
 
 Maze::setMazeSize(int mazeSize) {
@@ -162,6 +167,3 @@ Maze::generate() {
     
     return 0;
 }
-
-
-    
