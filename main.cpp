@@ -136,7 +136,7 @@ Maze::generate() {
 	gen.seed(5489u);
 
 	// clear maze
-	std::fill( g_Maze, g_Maze + NumCells * NumCells, 0 );
+	fill( g_Maze, g_Maze + NumCells * NumCells, 0 );
 
 	// setup initial point
 	g_PtX = RandomInt();
@@ -158,7 +158,7 @@ Maze::generate() {
 
         maze[ currentIndex() ] = Mask[ Dir ];
     }
-    std::cout << std::endl;
+    cout << endl;
     
     return 0;
 }
