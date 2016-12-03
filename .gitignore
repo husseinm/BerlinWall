@@ -446,3 +446,5 @@ __pycache__/
 bin/berlin_wall.exe
 bin/berlin_wall.app
 bin/berlin_wall.o
+
+CMakeFiles/
