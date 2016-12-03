@@ -149,16 +149,28 @@ class Maze {
         void setLineWidth (int width);
         void setMazeSize (int mazeSize);
         int generate();
-
+    
     private:
         int posX, posY;
-        enum eDirection;
+        int size, lineWidth;
+        bool* maze;
         int Heading_X[9];
         int Heading_Y[9];
         int Mask[9];
-        int size, lineWidth;
-        bool* maze;
-        
+    
+        enum eDirection {
+            eDirection_Invalid = 0,
+            eDirection_Up      = 1,
+            eDirection_Right   = 2,
+            eDirection_Down    = 4,
+            eDirection_Left    = 8
+        };
+
+        random_device rd;
+        mt19937 gen;
+        uniform_int_distribution<> dis;
+        uniform_int_distribution<> dis4;
+
         int currentIndex();
         int randInt();
         int randInt4();
@@ -168,56 +180,33 @@ class Maze {
 
 Maze::Maze(int size, int lineWidth) {
     maze = new bool[size * size];
-    random_device rd;
-    mt19937 gen( rd() );
-    uniform_int_distribution<> dis( 0, size-1 );
-    uniform_int_distribution<> dis4( 0, 3 );
 }
 
 Maze::~Maze() {
     delete maze;
 }
 
-Maze::setMazeSize(int mazeSize) {
+void Maze::setMazeSize(int mazeSize) {
 	size = mazeSize;
 } 
 
-Maze::setLineWidth(int width) {
+void Maze::setLineWidth(int width) {
 	lineWidth = width;
 }
-Maze::currentIndex() {
+int Maze::currentIndex() {
     return posX + size * posY;
 }
-Maze::int randInt(){
+int Maze::randInt(){
         return static_cast<int>( dis( gen ) );
     }
 
-Maze::int randInt4(){
+int Maze::randInt4(){
         return static_cast<int>( dis4( gen ) );
     }
-Maze::enum eDirection {
-        eDirection_Invalid = 0,
-        eDirection_Up      = 1,
-        eDirection_Right   = 2,
-        eDirection_Down    = 4,
-        eDirection_Left    = 8
-    };
 //                   0  1  2  3  4  5  6  7  8
 //                      U  R     D           L
-Maze::int Heading_X[9] = { 0, 0,+1, 0, 0, 0, 0, 0,-1 };
-Maze::int Heading_Y[9] = { 0,-1, 0, 0,+1, 0, 0, 0, 0 };
-Maze::int Mask[9]      = {
-                                0,
-                                eDirection_Down | eDirection_Down << 4,
-                                eDirection_Left | eDirection_Left << 4,
-                                0,
-                                eDirection_Up | eDirection_Up << 4,
-                                0,
-                                0,
-                                0,
-                                eDirection_Right | eDirection_Right << 4
-                            };
-Maze::bool IsDirValid( eDirection Dir ){
+
+bool Maze::IsDirValid( eDirection Dir ){
     int NewX = posX + Heading_X[ Dir ];
     int NewY = posY + Heading_Y[ Dir ];
 
@@ -226,7 +215,7 @@ Maze::bool IsDirValid( eDirection Dir ){
     return !maze[ NewX + size * NewY ];
 }
 
-Maze::eDirection GetDirection() {
+Maze::eDirection Maze::GetDirection() {
     eDirection Dir = eDirection( 1 << randInt4() );
 
     while ( true )
@@ -252,16 +241,36 @@ Maze::eDirection GetDirection() {
     }
 }
 
-Maze::generate() {
+int Maze::generate() {
+    
+    int Heading_X[9] = { 0, 0,+1, 0, 0, 0, 0, 0,-1 };
+    int Heading_Y[9] = { 0,-1, 0, 0,+1, 0, 0, 0, 0 };
+    int Mask[9]      = {
+                                    0,
+                                    eDirection_Down | eDirection_Down << 4,
+                                    eDirection_Left | eDirection_Left << 4,
+                                    0,
+                                    eDirection_Up | eDirection_Up << 4,
+                                    0,
+                                    0,
+                                    0,
+                                    eDirection_Right | eDirection_Right << 4
+                                };
+    
+    random_device rd;
+    mt19937 gen( rd() );
+    uniform_int_distribution<> dis( 0, size-1 );
+    uniform_int_distribution<> dis4( 0, 3 );
+    
     // prepare PRNG
 	gen.seed(5489u);
 
 	// clear maze
-	fill( g_Maze, g_Maze + NumCells * NumCells, 0 );
+	fill( maze, maze + size * size, 0 );
 
 	// setup initial point
-	g_PtX = RandomInt();
-	g_PtY = RandomInt();
+	posX = randInt();
+	posY = randInt();
     
     
     // Generate
