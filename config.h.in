@@ -1,3 +1,6 @@
+#ifndef BERLIN_WALL_CONFIG_H
+#define BERLIN_WALL_CONFIG_H
+
 #define BERLIN_WALL_VERSION_MAJOR @berlin_wall_VERSION_MAJOR@
 #define BERLIN_WALL_VERSION_MINOR @berlin_wall_VERSION_MINOR@
 
@@ -6,4 +9,6 @@
 std::string baseDir = resourcePath();
 #else
 std::string baseDir = "";
+#endif
+
 #endif
