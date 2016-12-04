@@ -2,7 +2,7 @@
 #define BERLIN_WALL_STATE_H
 
 #include <SFML/Graphics.hpp>
-#include "Message.h"
+#include "berlin_wall/include/Message.h"
 
 enum StateId {
   TitleState = 0,

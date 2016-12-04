@@ -2,8 +2,8 @@
 #define BERLIN_WALL_STATE_MANAGER_H
 
 #include <SFML/Graphics.hpp>
-#include "Message.h"
-#include "State.h"
+#include "berlin_wall/include/Message.h"
+#include "berlin_wall/include/State.h"
 
 class StateManager {
   public:

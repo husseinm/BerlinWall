@@ -5,7 +5,7 @@
 #include <map>
 #include <SFML/Graphics.hpp>
 
-#include "StateManager.h"
+#include "berlin_wall/include/StateManager.h"
 
 
 int main(int argc, char* argv[]) {
@@ -17,7 +17,7 @@ int main(int argc, char* argv[]) {
   sf::RenderWindow mainWindow(resolution, "Berlin Wall");
   mainWindow.setFramerateLimit(120);
   mainWindow.setVerticalSyncEnabled(true);
-  
+
    //mainWindow.setIcon(unsigned int width, unsigned int height, const Uint8 *pixels)
 
   StateManager* manager = StateManagerFactory::getManager(std::unique_ptr<sf::RenderWindow>(&mainWindow));
@@ -27,7 +27,6 @@ int main(int argc, char* argv[]) {
   float delta = 0.0;
 
   while (mainWindow.isOpen()) {
-
 
     // Clear the screen
     mainWindow.clear();

@@ -1,6 +1,6 @@
 #include <memory>
-#include "StateManager.h"
-#include "TitleState.h"
+#include "berlin_wall/include/StateManager.h"
+#include "berlin_wall/include/TitleState.h"
 
 /*
 void maintainAspectRatio(float newWidth, float) {

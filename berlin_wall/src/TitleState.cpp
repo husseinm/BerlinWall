@@ -1,5 +1,6 @@
 #include "config.h"
-#include "TitleState.h"
+#include <iostream>
+#include "berlin_wall/include/TitleState.h"
 
 TitleState::TitleState() {
 }
@@ -21,8 +22,8 @@ void TitleState::draw(sf::RenderWindow* context) {
   // Render
   sf::Font font;
 
-  if (!font.loadFromFile(baseDir + "KBPlanetEarth.ttf"))
-    return EXIT_FAILURE;
+  if (!font.loadFromFile(baseDir + "../assets/KBPlanetEarth.ttf"))
+    std::cout << "Could Not Load Font";
 
   sf::Text text("Hello SFML", font, 50);
   text.setStyle(sf::Text::Bold);

@@ -1,7 +1,7 @@
 #ifndef BERLIN_WALL_TITLE_STATE_H
 #define BERLIN_WALL_TITLE_STATE_H
 
-#include "State.h"
+#include "berlin_wall/include/State.h"
 
 class TitleState : State {
   public:
