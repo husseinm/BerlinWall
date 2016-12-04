@@ -2,6 +2,26 @@
 #include "StateManager.h"
 #include "TitleState.h"
 
+/*
+void maintainAspectRatio(float newWidth, float) {
+  //first we check our new aspect width to see if it changed
+  float newAspectWidth = window.getSize().x;
+  float newAspectHeight = window.getSize().y;
+
+  if(newAspectWidth != currentAspectWidth) {
+    // width changed, maintain the aspect ratio and adjust the height
+    currentAspectWidth = newAspectWidth;
+    currentAspectHeight = currentAspectWidth / aspectRatio;
+  } else if(newAspectHeight != currentAspectHeight) {
+    // height changed, maintain aspect ratio and change the width
+    currentAspectHeight = newAspectHeight;
+    currentAspectWidth = currentAspectHeight * aspectRatio;
+  }
+
+  std::cout << "width: " << currentAspectWidth << " height: " << currentAspectHeight;
+  window.setSize(sf::Vector2u(currentAspectWidth, currentAspectHeight));
+}
+*/
 StateManager::StateManager(std::unique_ptr<sf::RenderWindow> context) : context(std::move(context)) {
 }
 
@@ -21,8 +41,12 @@ void StateManager::popState() {
 }
 
 bool StateManager::handleEvent(const sf::Event& evt) {
-  if (evt.type == sf::Event::Closed) {
-    context->close();
+  switch(evt.type) {
+    case sf::Event::Closed:
+      context->close();
+    case sf::Event::Resized:
+      break;
+      //maintainAspectRatio(evt.size.width, evt.size.height);
   }
 
   states[StateId::TitleState]->handleEvent(evt);

@@ -23,7 +23,13 @@ include_directories("${PROJECT_BINARY_DIR}")
 # Define sources and executable
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 set(EXECUTABLE_NAME "berlin_wall")
-add_executable(${EXECUTABLE_NAME} main.cpp)
+
+file(GLOB BERLIN_WALL_SRC
+  "*.h"
+  "*.cpp"
+  )
+
+add_executable(${EXECUTABLE_NAME} ${BERLIN_WALL_SRC})
 
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
 

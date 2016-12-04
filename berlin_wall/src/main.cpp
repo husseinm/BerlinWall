@@ -7,18 +7,18 @@
 
 #include "StateManager.h"
 
+
 int main(int argc, char* argv[]) {
   sf::VideoMode resolution = sf::VideoMode(800, 600);
 
   // TODO: Get from Config file...
   // 4:3 resolution = sf::VideoMode(1366, 768);
 
-  //std::shared_ptr<sf::RenderWindow> mainWindow = std::make_shared<sf::RenderWindow>(new sf::RenderWindow(resolution, "Berlin Wall"));
   sf::RenderWindow mainWindow(resolution, "Berlin Wall");
   mainWindow.setFramerateLimit(120);
   mainWindow.setVerticalSyncEnabled(true);
-  // TODO: Set the icon
-  //mainWindow.setIcon(unsigned int width, unsigned int height, const Uint8 *pixels)
+  
+   //mainWindow.setIcon(unsigned int width, unsigned int height, const Uint8 *pixels)
 
   StateManager* manager = StateManagerFactory::getManager(std::unique_ptr<sf::RenderWindow>(&mainWindow));
   manager->registerState(StateId::TitleState);
