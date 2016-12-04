@@ -25,8 +25,8 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 set(EXECUTABLE_NAME "berlin_wall")
 
 file(GLOB BERLIN_WALL_SRC
-  "*.h"
-  "*.cpp"
+  "berlin_wall/include/*.h"
+  "berlin_wall/src/*.cpp"
   )
 
 add_executable(${EXECUTABLE_NAME} ${BERLIN_WALL_SRC})
