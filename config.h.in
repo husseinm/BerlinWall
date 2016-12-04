@@ -1,3 +1,9 @@
 #define BERLIN_WALL_VERSION_MAJOR @berlin_wall_VERSION_MAJOR@
 #define BERLIN_WALL_VERSION_MINOR @berlin_wall_VERSION_MINOR@
-#define test @SFML_ROOT@
+
+#ifdef __APPLE__
+#include "ResourcePath.hpp"
+std::string baseDir = resourcePath();
+#else
+std::string baseDir = "";
+#endif
