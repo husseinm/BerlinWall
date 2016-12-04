@@ -448,3 +448,8 @@ bin/berlin_wall.app
 bin/berlin_wall.o
 
 CMakeFiles/
+Makefile
+cmake_install.cmake
+CPackSourceConfig.cmake
+CPackConfig.cmake
+CMakeCache.txt
