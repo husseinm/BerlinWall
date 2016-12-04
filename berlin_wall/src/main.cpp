@@ -25,7 +25,6 @@ int main(int argc, char* argv[]) {
 
   float delta = 0.0;
 
-
   while (mainWindow->isOpen()) {
     // Clear the screen
     mainWindow->clear();

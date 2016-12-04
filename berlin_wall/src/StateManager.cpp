@@ -1,9 +1,14 @@
 #include <memory>
+<<<<<<< HEAD
+#include "berlin_wall/include/StateManager.h"
+#include "berlin_wall/include/TitleState.h"
+=======
 #include <iostream>
 
 #include "config.h"
 #include "StateManager.h"
 #include "TitleState.h"
+>>>>>>> origin/master
 
 /* Mahdi's Todo for today:
     4. Settings File Class

@@ -30,6 +30,9 @@ TitleState::TitleState() : kbPlanetEarth(), background(sf::Vector2f(screenWidth,
     quitButton.setPosition(screenWidth * 0.5, screenHeight * 0.8);
 }
 
+TitleState::TitleState() {
+}
+
 TitleState::~TitleState() {
 }
 
