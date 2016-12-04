@@ -11,6 +11,12 @@ class TitleState : State {
     void draw(sf::RenderWindow* context);
   private:
     friend class StateManager;
+    
+    sf::Font kbPlanetEarth;
+    sf::Text mainHeader;
+    sf::RectangleShape background;
+    sf::Texture backgroundImage;
+    sf::RectangleShape quitButton;
 
     TitleState();
     ~TitleState();

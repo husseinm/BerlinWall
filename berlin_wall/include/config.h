@@ -6,6 +6,7 @@
 
 #ifdef __APPLE__
 #include "ResourcePath.hpp"
+
 static const std::string baseDir = resourcePath();
 #else
 static const  std::string baseDir = "";

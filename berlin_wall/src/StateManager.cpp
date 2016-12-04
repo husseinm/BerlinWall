@@ -6,7 +6,6 @@
 #include "TitleState.h"
 
 /* Mahdi's Todo for today:
-    3. Custom Cursor/Icon
     4. Settings File Class
     5. StateManager
     6. Comment the shit out of everything
@@ -30,14 +29,28 @@ StateManager::StateManager(std::shared_ptr<sf::RenderWindow> context) : context(
     // Fixed View is necessary for linear cursor rendering
     fixedView = context->getView();
     renderView = fixedView;
-    updateViews(context->getSize().x, context->getSize().y);
+
+    //updateViews(context->getSize().x, context->getSize().y);
 }
 
 StateManager::~StateManager() {
 }
 
 void StateManager::registerState(StateId stateToCreate) {
-  states[stateToCreate] = std::unique_ptr<State>(new class TitleState());
+    switch (stateToCreate) {
+        case (TitleState):
+            states[stateToCreate] = std::unique_ptr<State>(new class TitleState());
+      /*  case (SettingsState):
+            states[stateToCreate] = std::unique_ptr<State>(new class SettingsState());
+        case (LevelState):
+            states[stateToCreate] = std::unique_ptr<State>(new class LevelState());
+        case (PauseState):
+            states[stateToCreate] = std::unique_ptr<State>(new class PauseState());
+        case (DifficultyState):
+            states[stateToCreate] = std::unique_ptr<State>(new class DifficultyState());
+        case (ScoreState):
+            states[stateToCreate] = std::unique_ptr<State>(new class ScoreState());*/
+    };
 }
 
 void StateManager::pushState(StateId stateToPush) {
@@ -88,6 +101,7 @@ StateManager* StateManagerFactory::getManager(std::shared_ptr<sf::RenderWindow> 
 };
 
 void StateManager::updateViews(int newWidth, int newHeight) {
+    /*
     // Compares the aspect ratio of the window to the aspect ratio of the view,
     // and sets the view's viewport accordingly in order to archieve a letterbox effect.
     // A new view (with a new viewport set) is returned.
@@ -112,4 +126,7 @@ void StateManager::updateViews(int newWidth, int newHeight) {
     renderView.setViewport(sf::FloatRect(posX, posY, sizeX, sizeY));
     fixedView.setSize(newWidth, newHeight);
     fixedView.setCenter(newWidth / 2, newHeight / 2);
+    screenWidth = newWidth;
+    screenHeight = newHeight;
+     */
 }

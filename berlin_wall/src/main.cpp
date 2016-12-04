@@ -10,15 +10,13 @@
 
 
 int main(int argc, char* argv[]) {
-    sf::VideoMode resolution = sf::VideoMode::getDesktopMode();
-
-    // TODO: Get from Config
-  auto mainWindow = std::make_shared<sf::RenderWindow>(resolution, "Berlin Wall");
+    auto mainWindow = std::make_shared<sf::RenderWindow>(sf::VideoMode(1024, 768), "Berlin Wall", sf::Style::Close);
   mainWindow->setFramerateLimit(120);
   mainWindow->setVerticalSyncEnabled(true);
   mainWindow->setMouseCursorVisible(false);
-    sf::Image appIcon;
-    appIcon.loadFromFile(baseDir + "icon.png");
+  
+  sf::Image appIcon;
+  appIcon.loadFromFile(baseDir + "icon.png");
   mainWindow->setIcon(128, 128, appIcon.getPixelsPtr());
 
   StateManager* manager = StateManagerFactory::getManager(mainWindow);
@@ -26,6 +24,7 @@ int main(int argc, char* argv[]) {
   manager->pushState(StateId::TitleState);
 
   float delta = 0.0;
+
 
   while (mainWindow->isOpen()) {
     // Clear the screen

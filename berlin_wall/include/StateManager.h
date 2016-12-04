@@ -2,8 +2,12 @@
 #define BERLIN_WALL_STATE_MANAGER_H
 
 #include <SFML/Graphics.hpp>
+#include <stack>
 #include "Message.h"
 #include "State.h"
+
+static float screenWidth = 1024;
+static float screenHeight = 768;
 
 class StateManager {
   public:
@@ -24,6 +28,10 @@ class StateManager {
     void updateViews(int newWidth, int newHeight);
     
     std::map<StateId, std::unique_ptr<State>> states;
+    std::stack<StateId> stateStack;
+    State* currentState;
+    State* pendingState;
+    
     std::shared_ptr<sf::RenderWindow> context;
     sf::View renderView;
     sf::View fixedView;
