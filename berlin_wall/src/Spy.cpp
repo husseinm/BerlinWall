@@ -1,7 +1,8 @@
 #include "config.h"
+#include "StateManager.h"
 #include "Spy.h"
 
-Spy::Spy() {
+Spy::Spy() : canMoveUp(true), canMoveDown(true), canMoveLeft(true), canMoveRight(true), stepRate(0) {
   frontSpy.loadFromFile(baseDir + "spy_front.png");
   backSpy.loadFromFile(baseDir + "spy_back.png");
   leftSpy.loadFromFile(baseDir + "spy_left.png");
@@ -9,7 +10,10 @@ Spy::Spy() {
 
   spySprite.setPosition(100, 100);
   spySprite.setTexture(frontSpy);
-  spySprite.scale(0.3, 0.3);
+    
+  sf::FloatRect spyRect = spySprite.getLocalBounds();
+  spySprite.setOrigin(spyRect.left + spyRect.width / 2.0f,
+                      spyRect.top + spyRect.height / 2.0f);
 }
 
 Spy::~Spy() {
@@ -39,19 +43,26 @@ bool Spy::handleEvent(const sf::Event& evt) {
 void Spy::handleMessage(const Message& msg) {
   if (msg.getId() == Message::MessageId::SpyMovedUp) {
     spySprite.setTexture(backSpy);
-    move(0, -15);
+    if (canMoveUp) move(0, -stepRate);
   } else if (msg.getId() == Message::MessageId::SpyMovedDown) {
     spySprite.setTexture(frontSpy);
-    move(0, 15);
+    if (canMoveDown) move(0, stepRate);
   } else if (msg.getId() == Message::MessageId::SpyMovedLeft) {
     spySprite.setTexture(leftSpy);
-    move(-15 ,0);
+    if (canMoveLeft) move(-stepRate ,0);
   } else if (msg.getId() == Message::MessageId::SpyMovedRight) { 
     spySprite.setTexture(rightSpy);
-    move(15, 0);
-  } else if (msg.getId() == Message::MessageId::SpyCollided) {
-    move(0, 0);
+    if (canMoveRight) move(stepRate, 0);
   }
+    
+   // Set the number of soldiers depending on difficulty
+   if (msg.getId() == Message::EasyDifficulty) {
+       stepRate = 60;
+   } else if (msg.getId() == Message::MediumDifficulty) {
+       stepRate = 20;
+   } else if (msg.getId() == Message::HardDifficulty) {
+       stepRate = 7;
+   }
 }
 
 void Spy::move(int x, int y) {
@@ -59,6 +70,10 @@ void Spy::move(int x, int y) {
 }
 
 bool Spy::update(float dt) {
+    canMoveLeft = spySprite.getPosition().x > 0;
+    canMoveRight = spySprite.getPosition().x < screenWidth;
+    canMoveDown = spySprite.getPosition().y < screenHeight;
+    canMoveUp = spySprite.getPosition().y > 0;
 }
 
 void Spy::draw(sf::RenderWindow* context) {

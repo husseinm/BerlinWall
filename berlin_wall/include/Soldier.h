@@ -7,10 +7,19 @@
 class Soldier : Entity
 {
   public:
+    Soldier();
+    ~Soldier();
     bool handleEvent(const sf::Event& evt);
     void handleMessage(const Message&);
     bool update(float dt);
     void draw(sf::RenderWindow* context);
+  private:
+    friend class LevelState;
+    
+    void regenerate();
+
+    sf::Sprite soldierSprite;
+    sf::Texture soldierTexture;
 };
 
 #endif
