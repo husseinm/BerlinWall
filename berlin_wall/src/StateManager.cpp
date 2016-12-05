@@ -9,12 +9,12 @@
 
 /* 
 
-1. Create the other States
- 2. Get them to run
- 3. Ensure Difficulty
- 4. Spy/Solider
- 5. Maze
- 6. Game
+   1. Create the other States
+   2. Get them to run
+   3. Ensure Difficulty
+   4. Spy/Solider
+   5. Maze
+   6. Game
 
 */
 

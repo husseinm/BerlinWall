@@ -15,7 +15,7 @@ class Soldier : Entity
     void draw(sf::RenderWindow* context);
   private:
     friend class LevelState;
-    
+
     void regenerate();
 
     sf::Sprite soldierSprite;

@@ -12,7 +12,7 @@ class TitleState : State {
     void draw(sf::RenderWindow* context);
   private:
     friend class StateManager;
-    
+
     sf::Font kbPlanetEarth;
     sf::Text mainHeader;
     sf::RectangleShape background;

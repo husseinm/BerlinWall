@@ -49,23 +49,23 @@ bool LevelState::update(float dt) {
   if (gameNotPaused) {
     soldier.update(dt);
     spy.update(dt);
-      
-      // If spy collides with soldier, add point
+
+    // If spy collides with soldier, add point
     if (spy.spySprite.getGlobalBounds().intersects(soldier.soldierSprite.getGlobalBounds())) {
       messageStack.push(Message(Message::MessageId::SoldierKilled));
       score += 1;
     }
-      
-      // Update countdown
+
+    // Update countdown
     remainingTime = 60.f - gameTime.getElapsedTime().asSeconds();
-      
-      // Pause game if countdown is 0
+
+    // Pause game if countdown is 0
     gameNotPaused = (remainingTime > 0);
   }
   return true;
 }
 
- // Draw
+// Draw
 void LevelState::draw(sf::RenderWindow* context) {
   context->draw(background);
   soldier.draw(context);
@@ -75,7 +75,7 @@ void LevelState::draw(sf::RenderWindow* context) {
   timeText.setPosition(screenWidth * 0.75, screenHeight * 0.05);
   timeText.setFillColor(sf::Color::Black);
   context->draw(timeText);
-    
+
   sf::Text scoreText(std::to_string(score), kbPlanetEarth, 50);
   scoreText.setPosition(screenWidth * 0.75, screenHeight * 0.15);
   scoreText.setFillColor(sf::Color::Black);

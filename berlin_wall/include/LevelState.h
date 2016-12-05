@@ -22,11 +22,11 @@ class LevelState : State {
     int score;
     float remainingTime;
     sf::Clock gameTime;
-    
+
     sf::Font kbPlanetEarth;
     sf::RectangleShape background;
     sf::Texture backgroundImage;
-    
+
     LevelState();
     ~LevelState();
 };

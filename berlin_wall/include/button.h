@@ -6,14 +6,14 @@
 #include "Message.h"
 
 class Button : Entity {
-public:
+  public:
     Button(std::string title, int fontSize, sf::Vector2f size, sf::Vector2f position, Message::MessageId emitter);
     ~Button();
     bool handleEvent(const sf::Event& evt);
     void handleMessage(const Message&);
     bool update(float dt);
     void draw(sf::RenderWindow* context);
-private:
+  private:
     sf::RectangleShape background;
     sf::Text title;
     sf::Font kbPlanetEarth;

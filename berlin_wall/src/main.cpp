@@ -57,7 +57,7 @@ int main(int argc, char* argv[]) {
 
     manager->update(frameTime.asMilliseconds());
     manager->draw();
-    
+
     //std::cout << "FPS: " << (1000.f / frameTime.asMilliseconds()) << std::endl;
 
     // Flip the buffer

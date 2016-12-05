@@ -17,7 +17,7 @@ class StateManager {
     void handleMessage(const Message&);
     bool update(float dt);
     void draw();
-    
+
     void registerState(StateId state);
     void pushState(StateId state);
   private:
@@ -26,14 +26,14 @@ class StateManager {
     StateManager(std::shared_ptr<sf::RenderWindow> context);
 
     void updateViews(int newWidth, int newHeight);
-    
+
     std::map<StateId, std::unique_ptr<State>> states;
     State* currentState;
-    
+
     std::shared_ptr<sf::RenderWindow> context;
     sf::View renderView;
     sf::View fixedView;
-    
+
     sf::Texture cursorTexture;
     sf::Sprite cursor;
 };

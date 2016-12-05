@@ -16,21 +16,21 @@ class Spy : Entity
     void draw(sf::RenderWindow* context);
   private:
     friend class LevelState;
-    
+
     void move(int x, int y);
 
     bool canMoveLeft;
     bool canMoveRight;
     bool canMoveUp;
     bool canMoveDown;
-    
+
     sf::Texture frontSpy;
     sf::Texture backSpy;
     sf::Texture leftSpy;
     sf::Texture rightSpy;
 
     sf::Sprite spySprite;
-    
+
     int stepRate;
 };
 
