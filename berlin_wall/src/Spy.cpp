@@ -35,6 +35,7 @@ bool Spy::handleEvent(const sf::Event& evt) {
   return true;
 }
 
+// Basic logic for the spy movement
 void Spy::handleMessage(const Message& msg) {
   if (msg.getId() == Message::MessageId::SpyMovedUp) {
     spySprite.setTexture(backSpy);
@@ -64,4 +65,3 @@ void Spy::draw(sf::RenderWindow* context) {
   // inside the main loop, between window.clear() and window.display()
   context->draw(spySprite);
 }
-

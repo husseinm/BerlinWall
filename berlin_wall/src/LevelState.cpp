@@ -26,6 +26,8 @@ bool LevelState::handleEvent(const sf::Event& evt) {
 }
 
 void LevelState::handleMessage(const Message& msg) {
+    
+    // Set the number of soldiers depending on difficulty
   if (msg.getId() == Message::EasyDifficulty) {
     numberOfSoldiers = 3;
   } else if (msg.getId() == Message::MediumDifficulty) {

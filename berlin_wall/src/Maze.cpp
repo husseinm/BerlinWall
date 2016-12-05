@@ -10,26 +10,32 @@ Maze::~Maze() {
     delete maze;
 }
 
+
+// Set the size of the maze
 void Maze::setMazeSize(int mazeSize) {
 	size = mazeSize;
 }
 
+// Set the width of the lines
 void Maze::setLineWidth(int width) {
 	lineWidth = width;
 }
+
+// Get the current index in the generation
 int Maze::currentIndex() {
     return posX + size * posY;
 }
+
+// Return random integers
 int Maze::randInt(){
         return static_cast<int>( dis( gen ) );
     }
 
 int Maze::randInt4(){
         return static_cast<int>( dis4( gen ) );
-    }
-//                   0  1  2  3  4  5  6  7  8
-//                      U  R     D           L
+}
 
+// Check if direction is valid
 bool Maze::IsDirValid( eDirection Dir ){
     int NewX = posX + Heading_X[ Dir ];
     int NewY = posY + Heading_Y[ Dir ];
@@ -39,6 +45,7 @@ bool Maze::IsDirValid( eDirection Dir ){
     return !maze[ NewX + size * NewY ];
 }
 
+// Get the direction 
 Maze::eDirection Maze::GetDirection() {
     eDirection Dir = eDirection( 1 << randInt4() );
 
@@ -65,6 +72,7 @@ Maze::eDirection Maze::GetDirection() {
     }
 }
 
+// Render line
 void Maze::Line( unsigned char* img, int x1, int y1, int x2, int y2 )
 {
 	if ( x1 == x2 )
@@ -90,6 +98,7 @@ void Maze::Line( unsigned char* img, int x1, int y1, int x2, int y2 )
 	}
 }
 
+// Render the maze
 void Maze::RenderMaze( unsigned char* img )
 {
 	for ( int y = 0; y < size; y++ )
@@ -100,7 +109,8 @@ void Maze::RenderMaze( unsigned char* img )
 
 			int nx = x * CellSize;
 			int ny = y * CellSize;
-
+            
+            // Check the direction and generate an appropriate line
 			if ( !( v & eDirection_Up    ) ) Line( img, nx,            ny,            nx + CellSize + 1, ny                );
 			if ( !( v & eDirection_Right ) ) Line( img, nx + CellSize, ny,            nx + CellSize,     ny + CellSize + 1 );
 			if ( !( v & eDirection_Down  ) ) Line( img, nx,            ny + CellSize, nx + CellSize + 1, ny + CellSize     );
@@ -109,8 +119,14 @@ void Maze::RenderMaze( unsigned char* img )
 	}
 }
 
-int Maze::generate() {
 
+// Generate a random maze
+int Maze::generate() {
+    
+    // Prepare some variables
+    
+    //                   0  1  2  3  4  5  6  7  8
+    //                      U  R     D           L    
     int Heading_X[9] = { 0, 0,+1, 0, 0, 0, 0, 0,-1 };
     int Heading_Y[9] = { 0,-1, 0, 0,+1, 0, 0, 0, 0 };
     int Mask[9]      = {
