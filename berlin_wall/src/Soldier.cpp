@@ -1,4 +1,4 @@
-/*#include "config.h"
+#include "config.h"
 #include "berlin_wall/include/Soldier.h"
 
 Soldier::Soldier() {
@@ -13,6 +13,7 @@ bool Soldier::handleEvent(const sf::Event& evt) {
 
 void Soldier::handleMessage(const Message&) {
   if(Message == die) {
+      // Remove the soldier on death
     soldier.delete();
   }
 }
@@ -34,6 +35,9 @@ void Soldier::draw(sf::RenderWindow* context) {
 }
 
 int getNumSoldiers(string difficulty) {
+    
+    // Set the number of soldiers depending on difficulty
+    
     int numSoldiers;
     if (difficulty == easy)
     {
@@ -50,6 +54,9 @@ int getNumSoldiers(string difficulty) {
 }
 
 void randomSoldierPositions(int numSoldiers) {
+    
+    // Get random positions the soldiers
+    
     float soldierPositionX[numSoldiers];
     float soldierPositionY[numSoldiers];
 
@@ -59,4 +66,4 @@ void randomSoldierPositions(int numSoldiers) {
         soldierPositionY[i] = static_cast <float> (rand()) / (static_cast <float> (RAND_MAX/600));
         soldierSprite.setPosition(soldierPositionX[i], soldierPositionY[i]);
     }
-}*/
+}

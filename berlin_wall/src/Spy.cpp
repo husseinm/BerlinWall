@@ -1,4 +1,4 @@
-/*#include "config.h"
+#include "config.h"
 #include "berlin_wall/include/Spy.h"
 
 Spy::Spy() {
@@ -11,24 +11,30 @@ bool Spy::handleEvent(const sf::Event& evt) {
   return true;
 }
 
+// Basic logic for the spy movement
 void Spy::handleMessage(const Message&) {
   if (Message == up){
     spySprite.setTexture(backSpy);
+      // Offset 1 up from the position
     move(0,1);
   }
   if (Message == down){
     spySprite.setTexture(frontSpy);
-    move(0,-1);
+      // Offset 1 down from the position
+    move(0,-1); 
   }
   if (Message == left){
     spySprite.setTexture(leftSpy);
+      // Offset 1 left from the position
     move(-1,0);
   }
   if (Message == right){
     spySprite.setTexture(rightSpy);
+      // Offset 1 right from the position
     move(1,0);
   }
   if (Message == collide){
+      //Don't move
     move(0,0);
   }
 }
@@ -36,8 +42,9 @@ void Spy::handleMessage(const Message&) {
 bool Spy::update(float dt) {
 }
 
+// 
 void Spy::draw(sf::RenderWindow* context) {
-  // Render
+  // Render the appropriate image for the orientation of the spy
   sf::Texture frontSpy;
   frontSpy.loadFromFile("spy_front.png");
 
@@ -57,4 +64,4 @@ void Spy::draw(sf::RenderWindow* context) {
 
   // inside the main loop, between window.clear() and window.display()
   context->draw(spySprite);
-}*/
+}
