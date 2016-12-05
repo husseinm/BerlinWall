@@ -12,7 +12,11 @@ class Message {
       SpyMovedDown,
       SpyCollided,
       SoldierKilled,
-      CloseGame
+      CloseGame,
+      ChooseDifficulty,
+      EasyDifficulty,
+      MediumDifficulty,
+      HardDifficulty
     };
 
     Message(MessageId msgId) : msgId(msgId) {};

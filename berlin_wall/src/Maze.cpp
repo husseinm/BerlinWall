@@ -1,7 +1,8 @@
+#include "Maze.h"
 #include "config.h"
-#include "berlin_wall/include/Soldier.h"
+#include "Soldier.h"
 
-Maze::Maze(int size, int lineWidth) {
+Maze::Maze(int size, int lineWidth) : ImageSize(256), CellSize(ImageSize / size) {
     maze = new bool[size * size];
 }
 
@@ -64,7 +65,7 @@ Maze::eDirection Maze::GetDirection() {
     }
 }
 
-void Line( unsigned char* img, int x1, int y1, int x2, int y2 )
+void Maze::Line( unsigned char* img, int x1, int y1, int x2, int y2 )
 {
 	if ( x1 == x2 )
 	{
@@ -89,7 +90,7 @@ void Line( unsigned char* img, int x1, int y1, int x2, int y2 )
 	}
 }
 
-void RenderMaze( unsigned char* img )
+void Maze::RenderMaze( unsigned char* img )
 {
 	for ( int y = 0; y < size; y++ )
 	{

@@ -3,8 +3,7 @@
 #include "TitleState.h"
 #include "StateManager.h"
 
-TitleState::TitleState() : kbPlanetEarth(), background(sf::Vector2f(screenWidth, screenHeight)), quitButton(Button("Quit Game", 75, sf::Vector2f(screenWidth * 0.75, screenHeight * 0.2),
-                                                                                                                   sf::Vector2f(screenWidth * 0.5, screenHeight * 0.8), Message::CloseGame)) {
+TitleState::TitleState() : kbPlanetEarth(), background(sf::Vector2f(screenWidth, screenHeight)), quitButton("Quit Game", 75, sf::Vector2f(screenWidth * 0.75, screenHeight * 0.2),                                                                                                                    sf::Vector2f(screenWidth * 0.5, screenHeight * 0.8), Message::CloseGame), playGameButton("Play Now", 75, sf::Vector2f(screenWidth * 0.75, screenHeight * 0.2),                                                                                                                    sf::Vector2f(screenWidth * 0.5, screenHeight * 0.55), Message::ChooseDifficulty) {
   kbPlanetEarth.loadFromFile(baseDir + "KBPlanetEarth.ttf");
   mainHeader = sf::Text("Berlin Wall", kbPlanetEarth, 180);
   mainHeader.setStyle(sf::Text::Bold);
@@ -31,6 +30,7 @@ TitleState::~TitleState() {
 
 bool TitleState::handleEvent(const sf::Event& evt) {
     quitButton.handleEvent(evt);
+    playGameButton.handleEvent(evt);
   return true;
 }
 
@@ -45,4 +45,5 @@ void TitleState::draw(sf::RenderWindow* context) {
   context->draw(background);
   context->draw(mainHeader);
   quitButton.draw(context);
+  playGameButton.draw(context);
 }

@@ -11,6 +11,6 @@ class Soldier : Entity
     void handleMessage(const Message&);
     bool update(float dt);
     void draw(sf::RenderWindow* context);
-}
+};
 
 #endif

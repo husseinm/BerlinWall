@@ -20,7 +20,6 @@ class StateManager {
     
     void registerState(StateId state);
     void pushState(StateId state);
-    void popState();
   private:
     friend class StateManagerFactory;
 
@@ -29,9 +28,7 @@ class StateManager {
     void updateViews(int newWidth, int newHeight);
     
     std::map<StateId, std::unique_ptr<State>> states;
-    std::stack<StateId> stateStack;
     State* currentState;
-    State* pendingState;
     
     std::shared_ptr<sf::RenderWindow> context;
     sf::View renderView;

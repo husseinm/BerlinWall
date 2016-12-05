@@ -23,8 +23,8 @@ class Maze {
     private:
         int posX, posY;
         int size, lineWidth;
-        const int CellSize = ImageSize / NumCells;
-        const int ImageSize = 256;
+        const int ImageSize;
+        const int CellSize;
         bool* maze;
         int Heading_X[9];
         int Heading_Y[9];

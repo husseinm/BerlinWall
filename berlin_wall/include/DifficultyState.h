@@ -1,10 +1,10 @@
-#ifndef BERLIN_WALL_TITLE_STATE_H
-#define BERLIN_WALL_TITLE_STATE_H
+#ifndef BERLIN_WALL_DIFFICULTY_STATE_H
+#define BERLIN_WALL_DIFFICULTY_STATE_H
 
-#include "Button.h"
 #include "State.h"
+#include "Button.h"
 
-class TitleState : State {
+class DifficultyState : State {
   public:
     bool handleEvent(const sf::Event& evt);
     void handleMessage(const Message&);
@@ -12,16 +12,18 @@ class TitleState : State {
     void draw(sf::RenderWindow* context);
   private:
     friend class StateManager;
-    
+
     sf::Font kbPlanetEarth;
-    sf::Text mainHeader;
     sf::RectangleShape background;
     sf::Texture backgroundImage;
-    Button quitButton;
-    Button playGameButton;
+    sf::Text mainHeader;
 
-    TitleState();
-    ~TitleState();
+    Button easyButton;
+    Button mediumButton;
+    Button hardButton;
+
+    DifficultyState();
+    ~DifficultyState();
 };
 
 #endif

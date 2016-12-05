@@ -21,6 +21,8 @@ int main(int argc, char* argv[]) {
 
   StateManager* manager = StateManagerFactory::getManager(mainWindow);
   manager->registerState(StateId::TitleState);
+  manager->registerState(StateId::DifficultyState);
+    
   manager->pushState(StateId::TitleState);
 
   float delta = 0.0;

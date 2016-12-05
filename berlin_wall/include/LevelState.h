@@ -1,10 +1,10 @@
-#ifndef BERLIN_WALL_TITLE_STATE_H
-#define BERLIN_WALL_TITLE_STATE_H
+#ifndef BERLIN_WALL_LEVEL_STATE_H
+#define BERLIN_WALL_LEVEL_STATE_H
 
-#include "Button.h"
 #include "State.h"
+#include "Button.h"
 
-class TitleState : State {
+class LevelState : State {
   public:
     bool handleEvent(const sf::Event& evt);
     void handleMessage(const Message&);
@@ -12,16 +12,15 @@ class TitleState : State {
     void draw(sf::RenderWindow* context);
   private:
     friend class StateManager;
+
+    int numberOfSoldiers;
     
     sf::Font kbPlanetEarth;
-    sf::Text mainHeader;
     sf::RectangleShape background;
     sf::Texture backgroundImage;
-    Button quitButton;
-    Button playGameButton;
-
-    TitleState();
-    ~TitleState();
+    
+    LevelState();
+    ~LevelState();
 };
 
 #endif
