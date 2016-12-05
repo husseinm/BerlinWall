@@ -7,10 +7,12 @@ Spy::Spy() : canMoveUp(true), canMoveDown(true), canMoveLeft(true), canMoveRight
   backSpy.loadFromFile(baseDir + "spy_back.png");
   leftSpy.loadFromFile(baseDir + "spy_left.png");
   rightSpy.loadFromFile(baseDir + "spy_right.png");
-
+    
+    // Initial position and texture
   spySprite.setPosition(100, 100);
   spySprite.setTexture(frontSpy);
     
+    // Set origin to center
   sf::FloatRect spyRect = spySprite.getLocalBounds();
   spySprite.setOrigin(spyRect.left + spyRect.width / 2.0f,
                       spyRect.top + spyRect.height / 2.0f);
@@ -19,6 +21,7 @@ Spy::Spy() : canMoveUp(true), canMoveDown(true), canMoveLeft(true), canMoveRight
 Spy::~Spy() {
 }
 
+ // Handle key presses
 bool Spy::handleEvent(const sf::Event& evt) {
   if (evt.type == sf::Event::KeyPressed) {
     if (evt.key.code == sf::Keyboard::W ||
@@ -65,10 +68,12 @@ void Spy::handleMessage(const Message& msg) {
    }
 }
 
+// Move spy
 void Spy::move(int x, int y) {
     spySprite.setPosition(spySprite.getPosition().x + x, spySprite.getPosition().y + y);
 }
 
+    // Moving range
 bool Spy::update(float dt) {
     canMoveLeft = spySprite.getPosition().x > 0;
     canMoveRight = spySprite.getPosition().x < screenWidth;

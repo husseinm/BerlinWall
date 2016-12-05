@@ -19,6 +19,7 @@ bool Soldier::handleEvent(const sf::Event& evt) {
   return true;
 }
 
+// If soldier dies, regenerate
 void Soldier::handleMessage(const Message& msg) {
   if (msg.getId() == Message::SoldierKilled) {
     regenerate();
@@ -32,6 +33,7 @@ void Soldier::draw(sf::RenderWindow* context) {
   context->draw(soldierSprite);
 }
 
+// Move soldier to new position
 void Soldier::regenerate() {
   // Get random positions the soldiers
   int x = 256 + static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / 768)) ;
