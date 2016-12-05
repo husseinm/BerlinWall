@@ -10,11 +10,11 @@
 
 
 int main(int argc, char* argv[]) {
-    auto mainWindow = std::make_shared<sf::RenderWindow>(sf::VideoMode(1024, 768), "Berlin Wall", sf::Style::Close);
+  auto mainWindow = std::make_shared<sf::RenderWindow>(sf::VideoMode(1024, 768), "Berlin Wall", sf::Style::Close);
   mainWindow->setFramerateLimit(120);
   mainWindow->setVerticalSyncEnabled(true);
   mainWindow->setMouseCursorVisible(false);
-  
+
   sf::Image appIcon;
   appIcon.loadFromFile(baseDir + "icon.png");
   mainWindow->setIcon(128, 128, appIcon.getPixelsPtr());
@@ -35,11 +35,12 @@ int main(int argc, char* argv[]) {
     while (mainWindow->pollEvent(event)) {
       manager->handleEvent(event);
     }
-    /*
-    while (MessageStack.pollMessage()) {
-      manager->handleMessage(<#const Message &#>)
+
+    while (!messageStack.empty()) {
+      manager->handleMessage(messageStack.top());
+      messageStack.pop();
     }
-    */
+
     manager->update(delta);
     manager->draw();
 

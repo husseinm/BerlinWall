@@ -2,7 +2,7 @@
 #define SPY_H_INCLUDED
 
 #include <SFML/Graphics.hpp>
-#include "berlin_wall/include/Entity.h"
+#include "Entity.h"
 
 class Spy : Entity
 {

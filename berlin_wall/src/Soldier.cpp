@@ -1,4 +1,4 @@
-#include "config.h"
+/*#include "config.h"
 #include "berlin_wall/include/Soldier.h"
 
 Soldier::Soldier() {
@@ -59,4 +59,4 @@ void randomSoldierPositions(int numSoldiers) {
         soldierPositionY[i] = static_cast <float> (rand()) / (static_cast <float> (RAND_MAX/600));
         soldierSprite.setPosition(soldierPositionX[i], soldierPositionY[i]);
     }
-}
+}*/

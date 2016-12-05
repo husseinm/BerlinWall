@@ -1,4 +1,4 @@
-#include "config.h"
+/*#include "config.h"
 #include "berlin_wall/include/Spy.h"
 
 Spy::Spy() {
@@ -57,4 +57,4 @@ void Spy::draw(sf::RenderWindow* context) {
 
   // inside the main loop, between window.clear() and window.display()
   context->draw(spySprite);
-}
+}*/

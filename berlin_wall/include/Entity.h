@@ -2,15 +2,14 @@
 #define ENTITY_H_INCLUDED
 
 #include <SFML/Graphics.hpp>
-#include "berlin_wall/include/Message.h"
+#include "Message.h"
 
-class Entity
-{
+class Entity {
 public:
   virtual bool handleEvent(const sf::Event& evt) = 0;
   virtual void handleMessage(const Message&) = 0;
   virtual bool update(float dt) = 0;
   virtual void draw(sf::RenderWindow* context) = 0;
-}
+};
 
 #endif

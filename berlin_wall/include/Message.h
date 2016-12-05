@@ -1,8 +1,28 @@
 #ifndef BERLIN_WALL_MESSAGE_H
 #define BERLIN_WALL_MESSAGE_H
 
-class Message {
+#include <stack>
 
+class Message {
+  public:
+    enum MessageId {
+      SpyMovedLeft = 0,
+      SpyMovedRight,
+      SpyMovedUp,
+      SpyMovedDown,
+      SpyCollided,
+      SoldierKilled,
+      CloseGame
+    };
+
+    Message(MessageId msgId) : msgId(msgId) {};
+    ~Message() {};
+
+    MessageId getId() const { return msgId; };
+  private:
+    MessageId msgId;
 };
+
+extern std::stack<Message> messageStack;
 
 #endif

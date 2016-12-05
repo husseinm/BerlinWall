@@ -1,16 +1,13 @@
 #include <memory>
-<<<<<<< HEAD
-#include "berlin_wall/include/StateManager.h"
-#include "berlin_wall/include/TitleState.h"
-=======
 #include <iostream>
 
 #include "config.h"
 #include "StateManager.h"
 #include "TitleState.h"
->>>>>>> origin/master
 
-/* Mahdi's Todo for today:
+/* 
+ 
+ Mahdi's Todo for today:
     4. Settings File Class
     5. StateManager
     6. Comment the shit out of everything
@@ -21,9 +18,9 @@
  
  */
 
+std::stack<Message> messageStack = std::stack<Message>();
 
 StateManager::StateManager(std::shared_ptr<sf::RenderWindow> context) : context(context), renderView(), cursorTexture(), cursor() {
-    
     // We are using a cursor sprite over the OS due to time constraints
     // Prepare the cursor sprite to be drawn over the mouse throughout the game
     cursorTexture.loadFromFile(baseDir + "cursor.png");
@@ -79,12 +76,17 @@ bool StateManager::handleEvent(const sf::Event& evt) {
 };
 
 void StateManager::handleMessage(const Message& message) {
+  if (message.getId() == Message::MessageId::CloseGame) {
+    context->close();
+    return;
+  }
+
   states[StateId::TitleState]->handleMessage(message);
 };
 
 bool StateManager::update(float dt) {
   return states[StateId::TitleState]->update(dt);
-};
+};s
 
 void StateManager::draw() {
   // Render the Game in the Viewport

@@ -1,7 +1,8 @@
 #ifndef BERLIN_WALL_TITLE_STATE_H
 #define BERLIN_WALL_TITLE_STATE_H
 
-#include "berlin_wall/include/State.h"
+#include "Button.h"
+#include "State.h"
 
 class TitleState : State {
   public:
@@ -16,7 +17,7 @@ class TitleState : State {
     sf::Text mainHeader;
     sf::RectangleShape background;
     sf::Texture backgroundImage;
-    sf::RectangleShape quitButton;
+    Button quitButton;
 
     TitleState();
     ~TitleState();

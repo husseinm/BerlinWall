@@ -2,14 +2,10 @@
 #define BERLIN_WALL_STATE_MANAGER_H
 
 #include <SFML/Graphics.hpp>
-<<<<<<< HEAD
 #include <stack>
 #include "Message.h"
 #include "State.h"
-=======
-#include "berlin_wall/include/Message.h"
-#include "berlin_wall/include/State.h"
->>>>>>> 52ad41afe85ec370d32a8d9aaea4c1c8275bcd38
+
 
 static float screenWidth = 1024;
 static float screenHeight = 768;
