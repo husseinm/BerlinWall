@@ -43,8 +43,8 @@ void DifficultyState::handleMessage(const Message& msg) {
   if (msg.getId() == Message::EasyDifficulty || 
       msg.getId() == Message::MediumDifficulty ||
       msg.getId() == Message::HardDifficulty) {
-    StateManagerFactory::getManager()->pushState(State::LevelState);
-    messageStack(msg);
+    StateManagerFactory::getManager()->pushState(LevelState);
+    messageStack.push(msg);
   }
 }
 

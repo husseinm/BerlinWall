@@ -4,13 +4,13 @@
 #include "StateManager.h"
 
 LevelState::LevelState() : kbPlanetEarth(), background(sf::Vector2f(screenWidth, screenHeight)) {
-    kbPlanetEarth.loadFromFile(baseDir + "KBPlanetEarth.ttf");
+  kbPlanetEarth.loadFromFile(baseDir + "KBPlanetEarth.ttf");
 
-    // Background
-    backgroundImage.loadFromFile(baseDir + "bg.jpg");
-    backgroundImage.setRepeated(true);
-    background.setTexture(&backgroundImage);
-    background.setTextureRect({ 0, 0, static_cast<int>(screenWidth), static_cast<int>(screenHeight)});
+  // Background
+  backgroundImage.loadFromFile(baseDir + "bg.jpg");
+  backgroundImage.setRepeated(true);
+  background.setTexture(&backgroundImage);
+  background.setTextureRect({ 0, 0, static_cast<int>(screenWidth), static_cast<int>(screenHeight)});
 }
 
 LevelState::~LevelState() {
@@ -31,9 +31,9 @@ void LevelState::handleMessage(const Message& msg) {
 }
 
 bool LevelState::update(float dt) {
-    return true;
+  return true;
 }
 
 void LevelState::draw(sf::RenderWindow* context) {
-    context->draw(background);
+  context->draw(background);
 }

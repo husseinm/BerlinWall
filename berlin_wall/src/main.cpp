@@ -10,15 +10,25 @@
 
 
 int main(int argc, char* argv[]) {
-  auto mainWindow = std::make_shared<sf::RenderWindow>(sf::VideoMode(1024, 768), "Berlin Wall", sf::Style::Close);
-  mainWindow->setFramerateLimit(120);
-  mainWindow->setVerticalSyncEnabled(true);
-  mainWindow->setMouseCursorVisible(false);
 
+    // Set window settings
+  auto mainWindow = std::make_shared<sf::RenderWindow>(sf::VideoMode(1024, 768), "Berlin Wall", sf::Style::Close);
+    
+    // Set the max framerate
+  mainWindow->setFramerateLimit(120);
+    
+    // Enable Vsync
+  mainWindow->setVerticalSyncEnabled(true);
+    
+    // Hide the cursor
+  mainWindow->setMouseCursorVisible(false);
+    
+    // Set the icon
   sf::Image appIcon;
   appIcon.loadFromFile(baseDir + "icon.png");
   mainWindow->setIcon(128, 128, appIcon.getPixelsPtr());
 
+    // Make manager
   StateManager* manager = StateManagerFactory::getManager(mainWindow);
   manager->registerState(StateId::TitleState);
   manager->registerState(StateId::DifficultyState);
