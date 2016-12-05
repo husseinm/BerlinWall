@@ -1,6 +1,7 @@
 #ifndef BERLIN_WALL_LEVEL_STATE_H
 #define BERLIN_WALL_LEVEL_STATE_H
 
+#include "Spy.h"
 #include "State.h"
 #include "Button.h"
 
@@ -13,7 +14,10 @@ class LevelState : State {
   private:
     friend class StateManager;
 
+    Spy spy;
+
     int numberOfSoldiers;
+    sf::Clock gameTime;
     
     sf::Font kbPlanetEarth;
     sf::RectangleShape background;
